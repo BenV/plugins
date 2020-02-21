@@ -368,6 +368,15 @@ public class Camera {
 
     try {
       recordingVideo = false;
+
+      try {
+        Camera.this.cameraCaptureSession.stopRepeating();
+        Camera.this.cameraCaptureSession.abortCaptures();
+      } catch (CameraAccessException e) {
+        result.error("cameraException", e.getMessage(), null);
+        return;
+      }
+
       mediaRecorder.stop();
       mediaRecorder.reset();
       startPreview();
