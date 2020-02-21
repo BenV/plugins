@@ -129,7 +129,7 @@ public class Camera {
     mediaRecorder.setOutputFormat(recordingProfile.fileFormat);
     if (enableAudio) mediaRecorder.setAudioEncoder(recordingProfile.audioCodec);
     mediaRecorder.setVideoEncoder(recordingProfile.videoCodec);
-    mediaRecorder.setVideoEncodingBitRate(recordingProfile.videoBitRate);
+    mediaRecorder.setVideoEncodingBitRate(Math.max(recordingProfile.videoBitRate, 5000 * 1024));
     if (enableAudio) mediaRecorder.setAudioSamplingRate(recordingProfile.audioSampleRate);
     mediaRecorder.setVideoFrameRate(recordingProfile.videoFrameRate);
     mediaRecorder.setVideoSize(recordingProfile.videoFrameWidth, recordingProfile.videoFrameHeight);
